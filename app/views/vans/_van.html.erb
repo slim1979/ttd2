@@ -3,9 +3,9 @@
       <td><%= link_to "##{resource.number}", van_path(resource) %></td>
     <% else %>
     <p>
-      <td class='actions'><%= link_to 'Показать', van_path(resource) %></td>
-      <td class='actions'><%= link_to 'Изменить', edit_van_path(resource) %></td>
-      <td class='actions delete'><%= link_to 'Удалить', van_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td class='action'><%= link_to 'Показать', van_path(resource) %></td>
+      <td class='action'><%= link_to 'Изменить', edit_van_path(resource) %></td>
+      <td class='action delete'><%= link_to 'Удалить', van_path(resource), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <td>Поезд: <%= resource.train.number unless @train %></td>
       <td>Тип: <%= resource.show_self_type %></td>
       <td>#<%= resource.number %></td>
