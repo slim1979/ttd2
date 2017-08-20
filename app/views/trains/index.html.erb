@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Доступные поезда:</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Номер</th>
+      <th>Вагонов</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @trains %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Создать новый поезд', new_train_path %>
