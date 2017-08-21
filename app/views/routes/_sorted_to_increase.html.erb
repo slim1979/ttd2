@@ -1,4 +1,4 @@
-<% @route.stations_sorted_to_increase.each do |station, index| %>
+<% @route.stations_sorted_by_increase.each do |station, index| %>
   <tr>
     <td><%= station.title %></td>
     <td><%= form_tag set_index_railway_station_path(station), method: :patch do %>
