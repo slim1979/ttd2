@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :routes
   resources :trains
   resources :vans
-  resources :railway_stations
+  resources :railway_stations do
+    patch :set_index, on: :member
+  end
   get 'welcome/index'
 
   root 'welcome#index'
