@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :routes
   resources :trains do
-    resources :vans
+    resources :vans, shallow: true
   end
   resources :railway_stations do
     patch :set_index, on: :member

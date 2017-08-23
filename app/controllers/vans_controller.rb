@@ -1,14 +1,13 @@
 class VansController < ApplicationController
-  before_action :set_train
+  before_action :set_train, only: %i[index create new]
+  before_action :set_van, only: %i[edit show]
 
   def index
     @vans = @train.vans
   end
 
   # GET /vans/1
-  def show
-    @van = @train.vans.find(params[:id])
-  end
+  def show; end
 
   # GET /vans/new
   def new
@@ -17,9 +16,7 @@ class VansController < ApplicationController
   end
 
   # GET /vans/1/edit
-  def edit
-    @van = @train.vans.find(params[:id])
-  end
+  def edit; end
 
   # POST /vans
   def create
@@ -34,9 +31,8 @@ class VansController < ApplicationController
 
   # PATCH/PUT /vans/1
   def update
-    @van = @train.vans.find(params[:id])
     if @van.update(van_params)
-      redirect_to @train, notice: 'Вагон успешно обновлен.'
+      redirect_to @van.train, notice: 'Вагон успешно обновлен.'
     else
       render :edit
     end
@@ -53,6 +49,10 @@ class VansController < ApplicationController
   # Use callbacks to share common setup or consvants between actions.
   def set_train
     @train = Train.find(params[:train_id])
+  end
+
+  def set_van
+    @van = Van.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
