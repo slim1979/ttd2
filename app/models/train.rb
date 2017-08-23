@@ -5,6 +5,7 @@ class Train < ApplicationRecord
   has_many :vans
 
   validates :number, presence: true
+  validates :number, uniqueness: { scope: :route_id }
   before_save :set_sort_by
 
   def platz_vans
