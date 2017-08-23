@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :routes
-  resources :trains
-  resources :vans
+  resources :trains do
+    resources :vans
+  end
   resources :railway_stations do
     patch :set_index, on: :member
   end
