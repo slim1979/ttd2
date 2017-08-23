@@ -17,6 +17,27 @@ class RailwayStation < ApplicationRecord
     station(route).try(:railway_station_index)
   end
 
+  def set_time_for(type, station)
+    method = "#{type}_at="
+    station.send method, time
+    station.save
+  end
+
+  def show_time_for(type, route)
+    station = station(route)
+    set_time_for(type, station)
+    method = "#{type}_at"
+    station.send method
+  end
+
+  def time
+    hours = rand(0..23)
+    minutes = rand(0..59)
+    hours = [0, hours].join if hours < 10
+    minutes = [0, minutes].join if minutes < 10
+    "#{hours}:#{minutes}"
+  end
+
   protected
 
   def station(route)

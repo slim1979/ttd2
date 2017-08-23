@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   end
   resources :railway_stations do
     patch :set_index, on: :member
+    patch :arrival_at, on: :member
+    patch :departure_at, on: :member
   end
   get 'welcome/index'
 
