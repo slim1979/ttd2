@@ -5,6 +5,9 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true
 
+  scope :increase, -> { joins(:railway_stations_routes).order('railway_stations_routes.railway_station_index').uniq }
+  scope :decrease, -> { joins(:railway_stations_routes).order('railway_stations_routes.railway_station_index DESC').uniq }
+
   def set_index_on(route, index)
     station = station(route)
     station.update(railway_station_index: index) if station
