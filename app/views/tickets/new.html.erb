@@ -1,1 +1,65 @@
+<%= params %>
 
+<%= form_for @ticket do |f| %>
+  <%= render 'common/errors', resource: @ticket %>
+
+  <div class='field'>
+    <%= 'Пользователь' %>
+    <%= params[:user_name] %>
+  </div>
+
+  <div>
+    <strong>Информация о выбранном поезде:</strong>
+  </div>
+
+  <div class='field'>
+    <%= 'Поезд' %>
+    <%= params[:train_number] %>
+  </div>
+
+  <div class='field'>
+    <%= 'Маршрут' %>
+    <%= params[:route_title] %>
+  </div>
+
+  <div class='field'>
+    <%= 'Начальная станция' %>
+    <%= params[:start_station_title] %>
+  </div>
+
+  <div class='field'>
+    <%= 'Конечная станция' %>
+    <%= params[:finish_station_title] %>
+  </div>
+
+  <div>
+    <strong>Данные пассажира:</strong>
+  </div>
+
+  <div class='field'>
+    <%= f.label :first_name, 'Имя' %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :last_name, 'Фамилия' %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :passport_serial, 'Серия паспорта' %>
+    <%= f.text_field :passport_serial %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :passport_number, 'Номер паспорта' %>
+    <%= f.text_field :passport_number %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: params[:user_id] %>
+  <%= f.hidden_field :start_station_id, value: params[:start_station_id] %>
+  <%= f.hidden_field :finish_station_id, value: params[:finish_station_id] %>
+  <%= f.hidden_field :train_id, value: params[:train_id] %>
+
+  <%= f.submit 'Купить' %>
+<% end %>
