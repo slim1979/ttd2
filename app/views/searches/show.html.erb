@@ -1,0 +1,18 @@
+<br />
+<% if @search.start_station_id == @search.finish_station_id %>
+  <%= 'Выберите разные станции'  %>
+<% else %>
+<% @ticket = Ticket.new %>
+  <%= form_for(@ticket) do |f| %>
+    <%= f.hidden_field :user_id, value: @search.user.id %>
+    <%= f.hidden_field :start_station_id, value: @search.start_station_id %>
+    <%= f.hidden_field :finish_station_id, value: @search.finish_station_id %>
+    <% @search.routes.each do |route| %>
+      <strong>Маршрут: </strong><%= route.title %><br />
+      <% route.trains.each do |train| %>
+        <strong>поезд: </strong><%= train.number %><%= f.submit 'Купить' %><br />
+        <%= f.hidden_field :train_id, value: train.id %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
