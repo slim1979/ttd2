@@ -2,7 +2,7 @@
            'Список станций'   => 'railway_stations_path',
            'Список маршрутов' => 'routes_path',
            'Список поездов'   => 'trains_path',
-           'Купить билет' => 'new_ticket_path'} %>
+           'Купить билет' => 'new_search_path'} %>
 <% type.each do |kind, path| %>
   <%= link_to kind, send(path) %>
 <% end %>

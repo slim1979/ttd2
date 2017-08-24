@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :tickets
   resources :users
+  resources :searches
   get 'welcome/index'
 
   root 'welcome#index'
