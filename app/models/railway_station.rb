@@ -25,8 +25,8 @@ class RailwayStation < ApplicationRecord
 
   def show_time_for(type, route)
     station = station(route)
-    set_time_for(type, station)
     method = "#{type}_at"
+    set_time_for(type, station) unless station.send method
     station.send method
   end
 
