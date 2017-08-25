@@ -1,10 +1,9 @@
 <%= params %>
-
 <%= form_for @ticket do |f| %>
   <%= render 'common/errors', resource: @ticket %>
 
   <div class='field'>
-    <%= 'Пользователь' %>
+    <strong>Пользователь:</strong>
     <%= params[:user_name] %>
   </div>
 
@@ -13,23 +12,14 @@
   </div>
 
   <div class='field'>
-    <%= 'Поезд' %>
-    <%= params[:train_number] %>
-  </div>
-
-  <div class='field'>
-    <%= 'Маршрут' %>
-    <%= params[:route_title] %>
-  </div>
-
-  <div class='field'>
-    <%= 'Начальная станция' %>
-    <%= params[:start_station_title] %>
-  </div>
-
-  <div class='field'>
-    <%= 'Конечная станция' %>
-    <%= params[:finish_station_title] %>
+    <strong>Поезд:</strong>
+    <%= params[:train_number] %><br />
+    <strong>Маршрут:</strong>
+    <%= params[:route_title] %><br />
+    <strong>Начальная станция:</strong>
+    <%= params[:start_station_title] %><br />
+    <strong>Конечная станция:</strong>
+    <%= params[:finish_station_title] %><br />
   </div>
 
   <div>
@@ -46,20 +36,20 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <div class='field'>
-    <%= f.label :passport_serial, 'Серия паспорта' %>
-    <%= f.text_field :passport_serial %>
+  <div>
+    <strong>Паспорт:</strong>
   </div>
 
   <div class='field'>
-    <%= f.label :passport_number, 'Номер паспорта' %>
+    <%= f.label 'Серия и номер:' %>
+    <%= f.text_field :passport_serial, size:5 %>
     <%= f.text_field :passport_number %>
   </div>
 
   <%= f.hidden_field :user_id, value: params[:user_id] %>
   <%= f.hidden_field :start_station_id, value: params[:start_station_id] %>
   <%= f.hidden_field :finish_station_id, value: params[:finish_station_id] %>
+  <%= f.hidden_field :route_id, value: params[:route_id] %>
   <%= f.hidden_field :train_id, value: params[:train_id] %>
-
   <%= f.submit 'Купить' %>
 <% end %>
