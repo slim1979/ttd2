@@ -24,7 +24,7 @@
           <%= hidden_field_tag :finish_station_title, RailwayStation.find(@finish_station).title %>
           <%= hidden_field_tag :train_id, train.id %>
           <%= hidden_field_tag :train_number, train.number %>
-          <%= submit_tag 'Выбрать' %>
+          <%= submit_tag 'Выбрать', class: "btn btn-primary btn-sm" %>
         </div>
       <% end %>
     <% end %>
