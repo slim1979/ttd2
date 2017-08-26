@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     patch :arrival_at, on: :member
     patch :departure_at, on: :member
   end
-  resources :tickets
+  resources :tickets do
+    get :filled_from_search, on: :member
+  end
   resources :users
   resources :searches
   get 'welcome/index'

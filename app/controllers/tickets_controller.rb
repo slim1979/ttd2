@@ -17,6 +17,15 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
+  def filled_from_search
+    @ticket = Ticket.new
+    @ticket.user_id = params[:user_id]
+    @ticket.route_id = params[:route_id]
+    @ticket.start_station_id = params[:start_station_id]
+    @ticket.finish_station_id = params[:finish_station_id]
+    @ticket.train_id = params[:train_id]
+  end
+
   private
 
   def ticket_params

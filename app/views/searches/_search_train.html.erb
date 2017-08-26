@@ -1,6 +1,6 @@
 <strong>Маршрут: <%= route.title %></strong><br />
 <% route.trains.each do |train| %>
-  <%= form_tag new_ticket_path, method: :get do %>
+  <%= form_tag filled_from_search_ticket_path, method: :get do %>
     <div class='train'>
       <strong>поезд: </strong><%= train.number %><br />
       отправление: <%= route.railway_stations.find(@start_station).show_time_for('departure', route) %><br />
