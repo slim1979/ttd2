@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :routes
   resources :trains do
     resources :vans, shallow: true
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   resources :tickets do
     get :filled_from_search, on: :member
   end
-  resources :users
   resources :searches
   get 'welcome/index'
 
