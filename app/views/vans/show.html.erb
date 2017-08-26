@@ -10,12 +10,8 @@
 
 <p>
   <strong>Текущий поезд:</strong>
-  <% if @van.train %>
     <%= @van.train.number %>
-  <% else %>
-    Не указано
-  <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_van_path(@van) %>
-<%= link_to 'Назад', vans_path %>
+<%= link_to 'Редактировать', edit_van_path %> | 
+<%= link_to 'К поезду', @van.train %>

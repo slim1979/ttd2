@@ -1,0 +1,15 @@
+<% if %w[increase decrease].include? type %>
+  <% @route.stations_sorted_by(type).each do |station| %>
+    <tr>
+      <td><%= station.title %></td>
+      <td><%= station.show_time_for('arrival', @route) %></td>
+      <td><%= station.show_time_for('departure', @route) %></td>
+      <td><%= form_tag set_index_railway_station_path(station), method: :patch do %>
+            <%= number_field_tag :position, station.show_index_on(@route)  %>
+            <%= hidden_field_tag :route_id, @route.id %>
+            <%= submit_tag 'Изменить' %>
+          <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

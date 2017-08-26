@@ -1,0 +1,20 @@
+<div>
+  <h3>Информация о купленном билете</h3>
+  <div>
+    <strong>Пассажир:</strong>
+    <%= @ticket.first_name %> <%= @ticket.last_name %><br />
+    <strong>Поезд:</strong>
+    <%= @ticket.train.number %><br />
+    <strong>Маршрут:</strong>
+    <%= @ticket.route.title %>
+    <br />
+    <strong>От станции</strong>
+    <%= @ticket.station('start').title %>
+    <b>отпр:</b><%=  @ticket.station_shedule('start').departure_at %>
+    <br />
+    <strong>До станции</strong>
+    <%= @ticket.station('finish').title %>
+    <b>приб:</b><%= @ticket.station_shedule('finish').arrival_at %>
+    <br />
+  </div>
+</div>

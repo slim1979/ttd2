@@ -10,7 +10,15 @@
   <% if @route.railway_stations.empty? %>
     Станции маршруту не назначены
   <% else %>
-    <%= render 'sorted_to_increase' %>
+    <table>
+      <thead>
+        <th>Название станции</th>
+        <th>Время прибытия</th>
+        <th>Время убытия</th>
+        <th>Позиция в маршруте</th>
+      </thead>
+      <%= render 'sorted', type: 'increase' %>
+    </table>
   <% end %>
 </p>
 

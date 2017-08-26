@@ -1,8 +1,9 @@
 class VansController < ApplicationController
-  before_action :set_van, only: %i[show edit update destroy]
-  # GET /vans
+  before_action :set_train, only: %i[index create new]
+  before_action :set_van, only: %i[edit show]
+
   def index
-    @vans = Van.all
+    @vans = @train.vans
   end
 
   # GET /vans/1
@@ -10,6 +11,7 @@ class VansController < ApplicationController
 
   # GET /vans/new
   def new
+    @train = Train.find(params[:train_id])
     @van = Van.new
   end
 
@@ -18,10 +20,10 @@ class VansController < ApplicationController
 
   # POST /vans
   def create
-    @van = Van.new(van_params)
+    @van = @train.vans.new(van_params)
 
     if @van.save
-      redirect_to vans_path(@van), notice: 'Вагон успешно создан.'
+      redirect_to @train, notice: 'Вагон успешно создан.'
     else
       render :new
     end
@@ -30,7 +32,7 @@ class VansController < ApplicationController
   # PATCH/PUT /vans/1
   def update
     if @van.update(van_params)
-      redirect_to vans_path(@van), notice: 'Вагон успешно обновлен.'
+      redirect_to @van.train, notice: 'Вагон успешно обновлен.'
     else
       render :edit
     end
@@ -45,6 +47,10 @@ class VansController < ApplicationController
   private
 
   # Use callbacks to share common setup or consvants between actions.
+  def set_train
+    @train = Train.find(params[:train_id])
+  end
+
   def set_van
     @van = Van.find(params[:id])
   end
@@ -53,6 +59,4 @@ class VansController < ApplicationController
   def van_params
     params.require(:van).permit(:van_kind_id, :top_seats, :bottom_seats, :side_top_seats, :side_bottom_seats, :seats, :train_id, :type)
   end
-
-
 end

@@ -1,0 +1,8 @@
+<br />
+<% @start_station = @search.start_station_id %>
+<% @finish_station = @search.finish_station_id %>
+<% if @start_station == @finish_station %>
+  <%= 'Выберите разные станции'  %>
+<% else %>
+  <%= render 'search_routes' %>
+<% end %>

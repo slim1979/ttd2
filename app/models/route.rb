@@ -8,16 +8,8 @@ class Route < ApplicationRecord
 
   before_validation :set_title
 
-  def stations_sorted_to_increase
-    stations = {}
-    railway_stations_routes.increase.each { |r| stations[r.railway_station] = r.railway_station_index }
-    stations
-  end
-
-  def stations_sorted_to_decrease
-    stations = {}
-    railway_stations_routes.decrease.each { |r| stations[r.railway_station] = r.railway_station_index }
-    stations
+  def stations_sorted_by(type)
+    railway_stations.send type.to_s
   end
 
   private
