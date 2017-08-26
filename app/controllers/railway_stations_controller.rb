@@ -49,6 +49,12 @@ class RailwayStationsController < ApplicationController
     redirect_to route
   end
 
+  def set_shedule
+    @railway_station = RailwayStation.find(params[:id])
+    @railway_station.update_shedule(params[:arrival_at], params[:departure_at])
+    redirect_to new_search_path
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

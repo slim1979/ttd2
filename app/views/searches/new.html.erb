@@ -1,3 +1,17 @@
+<br />
+<br />
+<table>
+  <% @search.stations.each do |station| %>
+  <tr>
+    <%= form_tag set_shedule_railway_station_path(station), method: :patch do %>
+      <td><%= station.title %></td>
+      <td><%= text_field_tag :arrival_at, station.show_time_for('arrival') %></td>
+      <td><%= text_field_tag :departure_at, station.show_time_for('departure') %></td>
+      <td><%= submit_tag 'Обновить расписание', class: "btn btn-primary btn-sm" %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
 <%= form_for(@search) do |form| %>
   <%= form.collection_select :user_id, User.all, :id, :name, {}, { class: 'btn btn-default dropdown-toggle' }  %>
   <%= form.label :title, 'Выберите станции' %>

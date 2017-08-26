@@ -17,17 +17,24 @@ class RailwayStation < ApplicationRecord
     station(route).try(:railway_station_index)
   end
 
-  def set_time_for(type, station)
+  def set_time_for(type, value)
+    station = access_to_shedule
     method = "#{type}_at="
-    station.send method, time
+    station.send method, value
     station.save
   end
 
-  def show_time_for(type, route)
-    station = station(route)
+  def show_time_for(type)
+    station = access_to_shedule
     method = "#{type}_at"
-    set_time_for(type, station) unless station.send method
     station.send method
+  end
+
+  def update_shedule(arrival_at, departure_at)
+    stations = access_to_collection_shedule
+    stations.each do |station|
+      station.update(arrival_at: arrival_at, departure_at: departure_at)
+    end
   end
 
   def time
@@ -40,7 +47,11 @@ class RailwayStation < ApplicationRecord
 
   protected
 
-  def station(route)
-    railway_stations_routes.where(route: route).first
+  def access_to_shedule
+    railway_stations_routes.first
+  end
+
+  def access_to_collection_shedule
+    railway_stations_routes
   end
 end

@@ -8,4 +8,8 @@ class Search < ApplicationRecord
     finish_station_routes = RailwayStationsRoute.where(railway_station: finish_station)
     start_station_routes.map(&:route) & finish_station_routes.map(&:route)
   end
+
+  def stations
+    RailwayStation.all
+  end
 end

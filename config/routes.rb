@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   end
   resources :railway_stations do
     patch :set_index, on: :member
-    patch :arrival_at, on: :member
-    patch :departure_at, on: :member
+    patch :set_shedule, on: :member
   end
   resources :tickets do
     get :filled_from_search, on: :member
