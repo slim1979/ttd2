@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Вагон номер:</strong>
   <%= @van.number %><br />
@@ -13,5 +11,5 @@
     <%= @van.train.number %>
 </p>
 
-<%= link_to 'Редактировать', edit_van_path %> | 
+<%= link_to 'Редактировать', edit_van_path %> |
 <%= link_to 'К поезду', @van.train %>
