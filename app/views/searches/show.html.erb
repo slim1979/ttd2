@@ -4,29 +4,5 @@
 <% if @start_station == @finish_station %>
   <%= 'Выберите разные станции'  %>
 <% else %>
-  <% @search.routes.each do |route| %>
-    <br />
-    <strong>Маршрут: <%= route.title %></strong><br />
-    <% route.trains.each do |train| %>
-      <%= form_tag new_ticket_path, method: :get do %>
-        <div>
-          <strong>поезд: </strong><%= train.number %><br />
-          отправление: <%= route.railway_stations.find(@start_station).show_time_for('departure', route) %><br />
-          прибытие: <%= route.railway_stations.find(@finish_station).show_time_for('arrival', route) %><br />
-
-          <%= hidden_field_tag :user_id, @search.user.id %>
-          <%= hidden_field_tag :user_name, @search.user.name %>
-          <%= hidden_field_tag :route_id, route.id %>
-          <%= hidden_field_tag :route_title, route.title %>
-          <%= hidden_field_tag :start_station_id, @start_station %>
-          <%= hidden_field_tag :start_station_title, RailwayStation.find(@start_station).title %>
-          <%= hidden_field_tag :finish_station_id, @finish_station %>
-          <%= hidden_field_tag :finish_station_title, RailwayStation.find(@finish_station).title %>
-          <%= hidden_field_tag :train_id, train.id %>
-          <%= hidden_field_tag :train_number, train.number %>
-          <%= submit_tag 'Выбрать', class: "btn btn-primary btn-sm" %>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
+  <%= render 'search_routes' %>
 <% end %>
