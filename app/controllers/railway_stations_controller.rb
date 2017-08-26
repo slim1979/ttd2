@@ -1,4 +1,5 @@
 class RailwayStationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_railway_station, only: %i[show edit update destroy set_index]
 
   # GET /railway_stations
