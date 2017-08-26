@@ -47,6 +47,10 @@ class RailwayStation < ApplicationRecord
 
   protected
 
+  def station(route)
+    railway_stations_routes.where(route: route).first
+  end
+
   def access_to_shedule
     railway_stations_routes.first
   end
