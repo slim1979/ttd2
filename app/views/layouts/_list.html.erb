@@ -6,3 +6,8 @@
 <% type.each do |kind, path| %>
   <%= link_to kind, send(path) %>
 <% end %>
+<% if user_signed_in? %>
+  <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-link btn-sm' %>
+<% else %>
+  <%= link_to 'Войти', new_user_session_path, class: 'btn btn-success btn-sm' %>
+<% end %>
