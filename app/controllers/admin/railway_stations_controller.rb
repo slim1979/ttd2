@@ -41,13 +41,13 @@ class Admin::RailwayStationsController < ApplicationController
   # DELETE /railway_stations/1
   def destroy
     @railway_station.destroy
-    redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.'
+    redirect_to admin_railway_stations_url, notice: 'Railway station was successfully destroyed.'
   end
 
   def set_index
     route = Route.find(params[:route_id])
     @railway_station.set_index_on(route, params[:position])
-    redirect_to route
+    redirect_to [:admin, route]
   end
 
   def set_shedule
