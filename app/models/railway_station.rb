@@ -27,7 +27,7 @@ class RailwayStation < ApplicationRecord
   def show_time_for(type)
     station = access_to_shedule
     method = "#{type}_at"
-    station.send method
+    station.send(method) if station
   end
 
   def update_shedule(arrival_at, departure_at)
