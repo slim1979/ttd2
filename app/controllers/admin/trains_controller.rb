@@ -1,5 +1,4 @@
-class Admin::TrainsController < ApplicationController
-  before_action :authenticate_user!
+class Admin::TrainsController < Admin::BaseController
   before_action :set_train, only: %i[show edit update destroy]
 
   # GET /trains
