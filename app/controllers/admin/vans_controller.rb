@@ -1,4 +1,4 @@
-class VansController < ApplicationController
+class Admin::VansController < ApplicationController
   before_action :set_train, only: %i[index create new]
   before_action :set_van, only: %i[edit show]
 

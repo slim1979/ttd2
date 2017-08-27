@@ -1,4 +1,4 @@
-class RailwayStationsController < ApplicationController
+class Admin::RailwayStationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_railway_station, only: %i[show edit update destroy set_index]
 
@@ -23,7 +23,7 @@ class RailwayStationsController < ApplicationController
     @railway_station = RailwayStation.new(railway_station_params)
 
     if @railway_station.save
-      redirect_to @railway_station, notice: 'Railway station was successfully created.'
+      redirect_to [:admin, @railway_station], notice: 'Railway station was successfully created.'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class RailwayStationsController < ApplicationController
   # PATCH/PUT /railway_stations/1
   def update
     if @railway_station.update(railway_station_params)
-      redirect_to @railway_station, notice: 'Railway station was successfully updated.'
+      redirect_to [:admin, @railway_station], notice: 'Railway station was successfully updated.'
     else
       render :edit
     end

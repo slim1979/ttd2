@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Поезд номер:</strong>
   <%= @train.number %>
   <br />
-  <%= link_to 'Добавить вагон', new_train_van_path(@train) %>
+  <%= link_to 'Добавить вагон', new_admin_train_van_path(@train) %>
 
   <% if @train.vans.empty? %>
     <br />
@@ -14,7 +12,7 @@
     <br />
     <strong>Вагоны:</strong>
     <%= render @train.sort_vans %>
-    <%= form_for(@train) do |form| %>
+    <%= form_for [:admin, @train] do |form| %>
       <div>
         <%= form.radio_button(:sort_by, "asc") %>В сторону увеличения
         <%= form.radio_button(:sort_by, "desc") %>В сторону уменьшения
@@ -24,7 +22,7 @@
 </p>
 <p>
       Вы можете указать тип вагона и интересующие Вас места для получения информации о них
-      <%= form_for(@train) do |form| %>
+      <%= form_for [:admin, @train] do |form| %>
         <%= form.label :van_type_to_more_info, 'Выберите тип вагона:' %>
         <%= form.collection_select :van_type_to_more_info, @train.vans_collection, :first, :last %>
         <%= form.label :places_type_to_more_info, 'Выберите тип мест:' %>
@@ -50,5 +48,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_train_path(@train) %> |
-<%= link_to 'Назад', trains_path %>
+<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
+<%= link_to 'Назад', admin_trains_path %>

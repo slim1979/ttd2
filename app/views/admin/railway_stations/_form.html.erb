@@ -1,6 +1,6 @@
-<%= form_for(@railway_station) do |form| %>
+<%= form_for [:admin, @railway_station] do |form| %>
   <%= render 'common/errors', resource: @railway_station %>
-  
+
   <div class="field">
     <%= form.label :title, 'Введите название станции:' %>
     <%= form.text_field :title, id: :railway_station_title %>

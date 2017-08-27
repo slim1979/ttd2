@@ -1,4 +1,4 @@
-class RoutesController < ApplicationController
+class Admin::RoutesController < ApplicationController
   before_action :set_route, only: %i[show edit update destroy]
 
   def index
@@ -13,7 +13,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to routes_path
+      redirect_to admin_routes_path
       flash[:notice] = "Маршрут #{@route.title} успешно создан!"
     else
       render :new
@@ -35,7 +35,7 @@ class RoutesController < ApplicationController
 
   def destroy
     @route.destroy
-    redirect_to routes_path
+    redirect_to admin_routes_path
     flash[:notice] = "Маршрут #{@route.title} удален!"
   end
 
