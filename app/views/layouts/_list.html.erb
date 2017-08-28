@@ -1,14 +1,21 @@
 <% if user_signed_in? %>
-Привет, <%= current_user.name %>
-<%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-link btn-sm' %>
+  Аккаунт: <%= current_user.email %>
+  <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-link btn-sm' %>
+  <% if current_user.admin? %>
+    <br />
+    <% type = {'Главная'          => 'root_path',
+      'Список станций'   => 'admin_railway_stations_path',
+      'Список маршрутов' => 'admin_routes_path',
+      'Список поездов'   => 'admin_trains_path',
+      'Купить билет' => 'new_search_path'} %>
+
+    <% type.each do |kind, path| %>
+      <%= link_to kind, send(path) %>
+    <% end %>
+  <% else %>
+    <br />
+    <%= link_to 'Купить билет', new_search_path %>
+  <% end %>
 <% else %>
-<%= link_to 'Войти', new_user_session_path, class: 'btn btn-success btn-sm' %>
+  <%= link_to 'Войти', new_user_session_path, class: 'btn btn-success btn-sm' %>
 <% end %><br />
-<% type = {'Главная'          => 'root_path',
-           'Список станций'   => 'admin_railway_stations_path',
-           'Список маршрутов' => 'admin_routes_path',
-           'Список поездов'   => 'admin_trains_path',
-           'Купить билет' => 'new_search_path'} %>
-<% type.each do |kind, path| %>
-  <%= link_to kind, send(path) %>
-<% end %>
