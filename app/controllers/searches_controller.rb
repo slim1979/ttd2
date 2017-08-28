@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new(search_params)
+    @search.user = current_user
 
     if @search.save
       redirect_to @search
@@ -20,6 +21,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:user_id, :start_station_id, :finish_station_id)
+    params.require(:search).permit(:start_station_id, :finish_station_id)
   end
 end

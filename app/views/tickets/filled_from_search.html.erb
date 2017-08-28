@@ -3,7 +3,7 @@
 
   <div class='field'>
     <strong>Пользователь:</strong>
-    <%= @ticket.user.name %>
+    <%= current_user.email %>
   </div>
 
   <div>
@@ -44,7 +44,6 @@
     <%= f.text_field :passport_number, class: 'form-control', placeholder: 'Номер' %>
   </div>
 
-  <%= f.hidden_field :user_id, value: params[:user_id] %>
   <%= f.hidden_field :start_station_id, value: params[:start_station_id] %>
   <%= f.hidden_field :finish_station_id, value: params[:finish_station_id] %>
   <%= f.hidden_field :route_id, value: params[:route_id] %>

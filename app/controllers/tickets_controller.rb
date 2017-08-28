@@ -3,8 +3,13 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
   end
 
+  def index
+    @tickets = Ticket.where(user: current_user)
+  end
+
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.user = current_user
 
     if @ticket.save
       redirect_to @ticket
@@ -19,7 +24,6 @@ class TicketsController < ApplicationController
 
   def filled_from_search
     @ticket = Ticket.new
-    @ticket.user_id = current_user.id
     @ticket.route_id = params[:route_id]
     @ticket.start_station_id = params[:start_station_id]
     @ticket.finish_station_id = params[:finish_station_id]
