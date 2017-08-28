@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
 
   def filled_from_search
     @ticket = Ticket.new
-    @ticket.user_id = params[:user_id]
+    @ticket.user_id = current_user.id
     @ticket.route_id = params[:route_id]
     @ticket.start_station_id = params[:start_station_id]
     @ticket.finish_station_id = params[:finish_station_id]

@@ -4,8 +4,7 @@
       <strong>поезд: </strong><%= train.number %><br />
       отправление: <%= route.railway_stations.find(@start_station).show_time_for('departure') %><br />
       прибытие: <%= route.railway_stations.find(@finish_station).show_time_for('arrival') %><br />
-      <%= link_to 'Выбрать', filled_from_search_ticket_path(user_id: @search.user.id,
-                                                            route_id: route.id,
+      <%= link_to 'Выбрать', filled_from_search_ticket_path(route_id: route.id,
                                                             start_station_id: @start_station,
                                                             finish_station_id: @finish_station,
                                                             train_id: train.id), class: "btn btn-primary btn-sm" %>
