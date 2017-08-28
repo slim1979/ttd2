@@ -9,11 +9,9 @@
   </head>
 
   <body>
+    <% if notice %><p id='notice' class='notice'><%= notice %></p><% end %>
+    <% if alert %><p class='alert'><%= alert %></p><% end %>
     <%= render 'layouts/list' %>
-
-    <p id='notice' class='notice'><%= notice %></p>
-    <p class='alert'><%= alert %></p>
-
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
