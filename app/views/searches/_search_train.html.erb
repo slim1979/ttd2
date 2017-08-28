@@ -1,17 +1,13 @@
 <strong>Маршрут: <%= route.title %></strong><br />
 <% route.trains.each do |train| %>
-  <%= form_tag filled_from_search_ticket_path, method: :get do %>
     <div class='train'>
       <strong>поезд: </strong><%= train.number %><br />
       отправление: <%= route.railway_stations.find(@start_station).show_time_for('departure') %><br />
       прибытие: <%= route.railway_stations.find(@finish_station).show_time_for('arrival') %><br />
-
-      <%= hidden_field_tag :user_id, @search.user.id %>
-      <%= hidden_field_tag :route_id, route.id %>
-      <%= hidden_field_tag :start_station_id, @start_station %>
-      <%= hidden_field_tag :finish_station_id, @finish_station %>
-      <%= hidden_field_tag :train_id, train.id %>
-      <%= submit_tag 'Выбрать', class: "btn btn-primary btn-sm" %>
+      <%= link_to 'Выбрать', filled_from_search_ticket_path(user_id: @search.user.id,
+                                                            route_id: route.id,
+                                                            start_station_id: @start_station,
+                                                            finish_station_id: @finish_station,
+                                                            train_id: train.id), class: "btn btn-primary btn-sm" %>
     </div>
-  <% end %>
 <% end %>
