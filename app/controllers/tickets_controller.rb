@@ -30,6 +30,12 @@ class TicketsController < ApplicationController
     @ticket.train_id = params[:train_id]
   end
 
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.destroy
+    redirect_to tickets_url, notice: 'Билет был успешно удален.'
+  end
+
   private
 
   def ticket_params
