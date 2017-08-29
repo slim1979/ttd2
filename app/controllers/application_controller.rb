@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if resourse.admin?
       tickets_path
     else
-      root_path
+      new_search_path
     end
   end
 end
