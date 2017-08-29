@@ -18,7 +18,7 @@
       </td>
       <td style='border-left:1px solid black'>
         <%= link_to 'Показать', ticket %><br />
-        <%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %><br />
+        <% if current_user.admin? %><%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %><br /> <% end %>
         <%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %><br />
       </td>
     </tr>
