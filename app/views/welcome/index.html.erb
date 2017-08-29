@@ -1,4 +1,3 @@
-<% if current_user %><p>Привет, <%= current_user.name %></p><% end %>
 <p>
   У нас Вы можете купить билеты на следующие направления:
   <% Route.all.each do |route| %>
