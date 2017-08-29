@@ -10,13 +10,16 @@
     <br />
     <strong>От станции</strong>
     <%= @ticket.station('start').title %>
-    <b>отпр:</b><%=  @ticket.station_shedule('start').departure_at %>
+    <b>отпр:</b><%=  @ticket.start_station.show_time_for('departure') %>
     <br />
     <strong>До станции</strong>
     <%= @ticket.station('finish').title %>
-    <b>приб:</b><%= @ticket.station_shedule('finish').arrival_at %>
+    <b>приб:</b><%= @ticket.finish_station.show_time_for('arrival') %>
     <br />
   </div>
 </div>
 <br />
-<%= link_to 'Назад', tickets_path %>
+<%= link_to 'К списку билетов', tickets_path %>
+<% if current_user.admin? %>
+  | <%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %>
+<% end %>
