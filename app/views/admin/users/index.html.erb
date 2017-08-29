@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <th>id</th>
+    <th>подтвержден</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>e-mail</th>
+    <th>Количество билетов</th>
+    <th>Действия</th>
+  </thead>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.confirmed? %></td>
+    <td><%= user.name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.tickets.count %></td>
+    <td><%= link_to 'Показать', admin_user_path(user) %> | 
+        <%= link_to 'Изменить', edit_admin_user_path(user) %> |
+        <%= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+  </tr>
+  <% end %>
+</table>

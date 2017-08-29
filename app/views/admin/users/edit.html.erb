@@ -1,0 +1,9 @@
+<%= form_for [:admin, @user] do |f| %>
+  Id: <%= @user.id %><br />
+  Подтвержден: <%= @user.confirmed? %><br />
+  Имя: <%= f.text_field :name %><br />
+  Фамилия: <%= f.text_field :last_name %><br />
+  @ <%= f.text_field :email %><br />
+  Билетов: <%= @user.tickets.count %><br />
+  <%= f.submit 'Сохранить' %>
+<% end %>
