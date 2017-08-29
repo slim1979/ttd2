@@ -2,18 +2,9 @@
 <br />
 <table>
   <% @search.stations.each do |station| %>
-  <tr>
-    <% if current_user.admin? %>
-      <% unless station.routes.empty? %>
-        <%= form_tag set_shedule_admin_railway_station_path(station), method: :patch do %>
-          <td><%= station.title %></td>
-          <td><%= text_field_tag :arrival_at, station.show_time_for('arrival') %></td>
-          <td><%= text_field_tag :departure_at, station.show_time_for('departure') %></td>
-          <td><%= submit_tag 'Обновить расписание', class: "btn btn-primary btn-sm" %></td>
-        <% end %>
-      <% end %>
-    <% end %>
-  </tr>
+    <tr>
+      <% if current_user.admin? %><%= render 'set_shedule', station: station %><% end %>
+    </tr>
   <% end %>
 </table>
 <%= form_for(@search) do |form| %>
