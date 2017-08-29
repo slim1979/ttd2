@@ -14,4 +14,10 @@ class Ticket < ApplicationRecord
   def station(type)
     RailwayStation.find(send("#{type}_station_id"))
   end
+
+  def confirmed_users
+    users = []
+    User.all.each { |user| users << user if user.confirmed? }
+    users
+  end
 end
