@@ -4,6 +4,7 @@
   <% if current_user.admin? %>
     <br />
     <% type = {'Главная'                           => 'root_path',
+               'Список пользователей'              => 'admin_users_path',
                'Список станций'                    => 'admin_railway_stations_path',
                'Список маршрутов'                  => 'admin_routes_path',
                'Список поездов'                    => 'admin_trains_path',
@@ -15,7 +16,7 @@
     <% end %>
   <% else %>
     <br />
-    <%= link_to 'Купить билет', new_search_path %> | 
+    <%= link_to 'Купить билет', new_search_path %> |
     <%= link_to "Мои билеты (#{current_user.tickets.count})", tickets_path %>
   <% end %>
 <% else %>
