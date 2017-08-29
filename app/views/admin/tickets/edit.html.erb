@@ -1,0 +1,55 @@
+<div>
+  <h3>Изменение купленного билета</h3>
+  <div>
+    <%= form_for [:admin, @ticket] do |f| %>
+      <strong>Пассажир:</strong>
+      <div>
+        <%= f.label :first_name, 'Имя' %>
+        <%= f.text_field :first_name %><br />
+      </div>
+
+      <div>
+        <%= f.label :last_name, 'Фамилия' %>
+        <%= f.text_field :last_name %><br />
+      </div>
+
+      <div>
+        <%= f.label :passport_serial, 'Серия паспорта' %>
+        <%= f.text_field :passport_serial %><br />
+      </div>
+
+      <div>
+        <%= f.label :passport_number, 'Номер паспорта' %>
+        <%= f.text_field :passport_number %><br />
+      </div>
+
+      <div>
+        <strong>Маршрут:</strong>
+        <%= @ticket.route.title %><br />
+      </div>
+
+      <div>
+        <strong>Поезд:</strong>
+        <%= f.collection_select :train_id, Train.where(route: @ticket.route), :id, :number %><br />
+      </div>
+
+      <div>
+        <strong>От станции</strong>
+        <p>Текущая: <%= @ticket.start_station.title %></p>
+        <p>Новая: <%= f.collection_select :start_station_id, @ticket.route.railway_stations, :id, :title %></p>
+      </div>
+
+      <div>
+        <strong>До станции</strong>
+        <p>Текущая: <%= @ticket.finish_station.title %></p>
+        <p>Новая: <%= f.collection_select :start_station_id, @ticket.route.railway_stations, :id, :title %></p>
+      </div>
+
+      <div>
+        <%= f.submit 'Изменить' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<%= link_to 'К списку билетов', tickets_path %>

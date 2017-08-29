@@ -1,0 +1,54 @@
+<%= form_for [:admin, @ticket] do |f| %>
+  <%= render 'common/errors', resource: @ticket %>
+
+  <div class='field'>
+    <strong>Пользователь:</strong>
+    <%= current_user.email %><br />
+    <%= f.label :user, 'Билет для:' %>
+    <%= f.collection_select :user_id, @ticket.confirmed_users, :id, :email %>
+  </div>
+
+  <div>
+    <strong>Информация о выбранном поезде:</strong>
+  </div>
+
+  <div class='field'>
+    <strong>Поезд:</strong>
+    <%= @ticket.train.number %><br />
+    <strong>Маршрут:</strong>
+    <%= @ticket.route.title %><br />
+    <strong>Начальная станция:</strong>
+    <%= @ticket.start_station.title %><br />
+    <strong>Конечная станция:</strong>
+    <%= @ticket.finish_station.title %><br />
+  </div>
+
+  <div>
+    <strong>Данные пассажира:</strong>
+  </div>
+
+  <div class='field'>
+    <%= f.label :first_name, 'Имя' %>
+    <%= f.text_field :first_name, class: 'form-control', placeholder: 'Имя' %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :last_name, 'Фамилия' %>
+    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Фамилия' %>
+  </div>
+
+  <div>
+    <strong>Паспорт:</strong>
+  </div>
+
+  <div class='field'>
+    <%= f.text_field :passport_serial, class: 'form-control serial', placeholder: 'Серия', size: 10 %>
+    <%= f.text_field :passport_number, class: 'form-control', placeholder: 'Номер' %>
+  </div>
+
+  <%= f.hidden_field :start_station_id, value: params[:start_station_id] %>
+  <%= f.hidden_field :finish_station_id, value: params[:finish_station_id] %>
+  <%= f.hidden_field :route_id, value: params[:route_id] %>
+  <%= f.hidden_field :train_id, value: params[:train_id] %>
+  <%= f.submit 'Купить', class: "btn btn-primary btn-sm" %>
+<% end %>
