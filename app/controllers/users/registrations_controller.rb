@@ -8,15 +8,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -44,8 +38,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def user_params
+  def sign_up_params
     params.require(:user).permit(:name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def account_update_params
+    params.require(:user).permit(:name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
