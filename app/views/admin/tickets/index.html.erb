@@ -1,0 +1,24 @@
+<br />
+<% if @tickets.empty? %>
+  <p>Не было создано ни одного билета</p>
+<% else %>
+  <table class="table table-hover">
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td>
+          <%= "Пользователь: #{ticket.user.id}, почта: #{ticket.user.email}" %><br />
+          <strong>Пассажир: </strong><%= ticket.first_name %> <%= ticket.last_name %><br />
+          <strong>Маршрут: </strong><%= ticket.route.title %><br />
+          <strong>От станции: </strong><%= ticket.start_station.title %>, отпр. <%= ticket.start_station.show_time_for('departure') %><br />
+          <strong>До станции: </strong><%= ticket.finish_station.title %>, приб. <%= ticket.start_station.show_time_for('arrival') %><br />
+          <strong>Поезд: </strong><%= ticket.train.number %><br />
+        </td>
+        <td style='border-left:1px solid black'>
+          <%= link_to 'Показать', ticket %><br />
+          <%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %><br />
+          <%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %><br />
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

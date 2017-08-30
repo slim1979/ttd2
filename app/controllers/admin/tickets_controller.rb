@@ -1,6 +1,10 @@
 class Admin::TicketsController < Admin::BaseController
   before_action :set_ticket, only: %i[edit update destroy]
 
+  def index
+    @tickets = Ticket.all
+  end
+
   def new
     @ticket = Ticket.new
     @ticket.route_id = params[:route_id]

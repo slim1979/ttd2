@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resourse)
     if resourse.admin?
-      tickets_path
+      admin_tickets_path
     else
       new_search_path
     end
