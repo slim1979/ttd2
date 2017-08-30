@@ -1,5 +1,4 @@
 <br />
-<% @tickets = Ticket.all if current_user.admin? %>
 <% if @tickets.empty? %>
   <p>У вас нет билетов</p>
 <% else %>
