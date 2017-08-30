@@ -10,7 +10,7 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @tickets = current_user.admin? ? Ticket.all : Ticket.where(user: current_user)
+    @tickets = Ticket.where(user: current_user)
   end
 
   def create
