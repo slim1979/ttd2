@@ -1,24 +1,8 @@
 <% if user_signed_in? %>
   Аккаунт: <%= current_user.email %>
   <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-link btn-sm' %>
-  <% if current_user.admin? %>
-    <br />
-    <% type = {'Главная'                           => 'root_path',
-               'Список пользователей'              => 'admin_users_path',
-               'Список станций'                    => 'admin_railway_stations_path',
-               'Список маршрутов'                  => 'admin_routes_path',
-               'Список поездов'                    => 'admin_trains_path',
-               'Купить билет для пользователя'     => 'new_search_path',
-               'Купленные билеты'                  => 'tickets_path'} %>
-
-    <% type.each do |kind, path| %>
-      <%= link_to kind, send(path) %> |
-    <% end %>
-  <% else %>
-    <br />
-    <%= link_to 'Купить билет', new_search_path %> |
-    <%= link_to "Мои билеты (#{current_user.tickets.count})", tickets_path %>
-  <% end %>
+  <%= link_to 'Купить билет', new_search_path %> |
+  <%= link_to "Мои билеты (#{current_user.tickets.count})", tickets_path %>
 <% else %>
   <%= link_to 'Регистрация', new_user_registration_path, class: 'btn btn-primary btn-sm' %>
   <%= link_to 'Войти', new_user_session_path, class: 'btn btn-success btn-sm' %>
