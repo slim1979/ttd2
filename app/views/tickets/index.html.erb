@@ -6,9 +6,6 @@
     <% @tickets.each do |ticket| %>
     <tr>
       <td>
-        <% if current_user.admin? %>
-          <%= "Пользователь: #{ticket.user.id}, почта: #{ticket.user.email}" %><br />
-        <% end %>
         <strong>Пассажир: </strong><%= ticket.first_name %> <%= ticket.last_name %><br />
         <strong>Маршрут: </strong><%= ticket.route.title %><br />
         <strong>От станции: </strong><%= ticket.start_station.title %>, отпр. <%= ticket.start_station.show_time_for('departure') %><br />
@@ -17,7 +14,6 @@
       </td>
       <td style='border-left:1px solid black'>
         <%= link_to 'Показать', ticket %><br />
-        <% if current_user.admin? %><%= link_to 'Редактировать', edit_admin_ticket_path(ticket) %><br /> <% end %>
         <%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Вы уверены?' } %><br />
       </td>
     </tr>
