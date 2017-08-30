@@ -1,5 +1,5 @@
 class Admin::TicketsController < Admin::BaseController
-  before_action :set_ticket, only: %i[edit update destroy]
+  before_action :set_ticket, only: %i[edit show update destroy]
 
   def index
     @tickets = Ticket.all
@@ -17,11 +17,13 @@ class Admin::TicketsController < Admin::BaseController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      redirect_to @ticket
+      redirect_to [:admin, @ticket]
     else
       render :new
     end
   end
+
+  def show; end
 
   def edit; end
 
