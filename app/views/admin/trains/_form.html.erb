@@ -2,21 +2,21 @@
   <%= render 'common/errors', resource: @train %>
 
   <div class="field">
-    <%= form.label :number, 'Введите номер:' %>
+    <%= form.label :number %>
     <%= form.text_field :number, id: :train_number %>
   </div>
 
   <div class="field">
-    <%= form.label :current_station, 'Назначить станцию:' %>
+    <%= form.label :current_station %>
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
   </div>
 
   <div class="field">
-    <%= form.label :route, 'Назначить маршрут' %>
+    <%= form.label :route %>
     <%= form.collection_select :route_id, Route.all, :id, :title %>
   </div>
 
   <div class="actions">
-    <%= form.submit "#{ @train.new_record? ? 'Создать поезд' : 'Изменить поезд'}" %>
+    <%= form.submit t('.submit', action: @train.new_record? ? 'Создать' : 'Изменить') %>
   </div>
 <% end %>
