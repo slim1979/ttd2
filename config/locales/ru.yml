@@ -1,12 +1,25 @@
 ru:
   common:
+    messages:
+      railway_station_has_no_route_yet: 'Станция не входит ни в один маршрут'
+      railway_station_has_next_routes: 'Станция входит в следующие маршруты:'
     errors: 'При заполнении формы возникли ошибки:'
     back: 'Назад'
     show: 'Показать'
+    edit: 'Изменить'
+    delete: 'Удалить'
+    create_new_station: 'Создать новую станцию'
+  table:
+    thead:
+      name: 'Наименование:'
   admin:
     railway_stations:
+      index:
+        title: 'Имеющиеся станции'
       new:
         title: 'Новая станция'
+      edit:
+        title: 'Изменить станцию'
       form:
         submit: '%{action} станцию'
     trains:

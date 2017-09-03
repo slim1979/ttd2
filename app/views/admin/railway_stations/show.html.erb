@@ -1,12 +1,12 @@
 <p>
-  <strong>Наименование:</strong>
+  <strong><%= t('table.thead.name') %></strong>
   <%= @railway_station.title %>
 </p>
 
 <% if @railway_station.routes.empty? %>
-  <p>Станция не входит ни в один маршрут</p>
+  <p><%= t('common.messages.railway_station_has_no_route_yet') %></p>
 <% else %>
-  <p>Станция входит в следующие маршруты:</p>
+  <p><%= t('common.messages.railway_station_has_next_routes') %></p>
   <% @railway_station.routes.each do |s| %>
     <ul>
       <li><%= s.title %></li>
@@ -14,5 +14,5 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Редактировать', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+<%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %> |
+<%= link_to t('common.back'), admin_railway_stations_path %>
