@@ -3,6 +3,7 @@ ru:
     models:
       railway_station: 'Станция'
       train: 'Поезд'
+      route: 'Маршрут'
     attributes:
       railway_station:
         title: 'Название'
@@ -10,6 +11,8 @@ ru:
         number: 'Номер'
         current_station: 'Текущая станция'
         route: 'Назначить маршрут'
+      route:
+        title: 'Наименование'
   errors:
     messages:
       blank: 'не может быть пустым'

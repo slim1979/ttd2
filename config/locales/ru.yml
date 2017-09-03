@@ -3,25 +3,44 @@ ru:
     messages:
       railway_station_has_no_route_yet: 'Станция не входит ни в один маршрут'
       railway_station_has_next_routes: 'Станция входит в следующие маршруты:'
+      route_has_no_railway_stations_yet: 'Станции маршруту не назначены'
+      route_has_no_trains_yet: 'Поезда маршруту не назначены'
     errors: 'При заполнении формы возникли ошибки:'
+  links:
     back: 'Назад'
     show: 'Показать'
     edit: 'Изменить'
     delete: 'Удалить'
-    create_new_station: 'Создать новую станцию'
+    new_station: 'Создать станцию'
+    new_route: 'Создать маршрут'
   table:
     thead:
       name: 'Наименование:'
+      station_title: 'Название станции'
+      arrival_time: 'Время прибытия'
+      departure_time: 'Время убытия'
+      position_in_route: 'Позиция в маршруте'
   admin:
     railway_stations:
       index:
-        title: 'Имеющиеся станции'
+        title: 'Имеющиеся станции:'
       new:
-        title: 'Новая станция'
+        title: 'Новая станция:'
       edit:
-        title: 'Изменить станцию'
+        title: 'Изменить станцию:'
       form:
         submit: '%{action} станцию'
     trains:
       form:
         submit: '%{action} поезд'
+    routes:
+      index:
+        title: 'Имеющиеся маршруты:'
+      new:
+        title: 'Новый маршрут:'
+      edit:
+        title: 'Изменить маршрут:'
+      show:
+        route_name: 'Наименование маршрута:'
+        route_railway_stations: 'Станции на маршруте:'
+        trains_on_the_route: 'Поезда на маршруте:'

@@ -1,19 +1,19 @@
 <p>
-  <strong>Наименование маршрута:</strong>
+  <strong><%= t('.route_name') %></strong>
   <%= @route.title %>
 </p>
 
 <p>
-  <strong>Станции на маршруте:</strong>
+  <strong><%= t('.route_railway_stations') %></strong>
   <% if @route.railway_stations.empty? %>
-    Станции маршруту не назначены
+    <%= t('common.messages.route_has_no_railway_stations_yet') %>
   <% else %>
     <table>
       <thead>
-        <th>Название станции</th>
-        <th>Время прибытия</th>
-        <th>Время убытия</th>
-        <th>Позиция в маршруте</th>
+        <th><%= t('table.thead.station_title') %></th>
+        <th><%= t('table.thead.arrival_time') %></th>
+        <th><%= t('table.thead.departure_time') %></th>
+        <th><%= t('table.thead.position_in_route') %></th>
       </thead>
       <%= render 'sorted', type: 'increase' %>
     </table>
@@ -21,9 +21,9 @@
 </p>
 
 <p>
-  <strong>Поезда на маршруте:</strong>
+  <strong><%= t('.trains_on_the_route') %></strong>
   <% if @route.trains.empty? %>
-    На маршруте нет ни одного поезда
+    <%= t('common.messages.route_has_no_trains_yet') %>
   <% else %>
     <% @route.trains.each do |train| %>
       <ul>
@@ -35,5 +35,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Изменить', edit_admin_route_path(@route) %> |
-<%= link_to 'Назад', admin_routes_path %>
+<%= link_to t('links.edit'), edit_admin_route_path(@route) %> |
+<%= link_to t('links.back'), admin_routes_path %>
