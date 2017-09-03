@@ -1,4 +1,12 @@
 ru:
+  devise:
+    shared:
+      links:
+        sign_in: 'Войти'
+        registration: 'Регистрация'
+        forgot_password: 'Забыли пароль?'
+        didnt_receive_confirmation_instructions: 'Не получили письма с подтверждением регистрации?'
+        didnt_receive_unlock_instructions: 'Не получили письма с инструкцией по разблокировке?'
   common:
     messages:
       railway_station_has_no_route_yet: 'Станция не входит ни в один маршрут'
