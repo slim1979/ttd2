@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :tickets do
-    get :filled_from_search, on: :member
-  end
-
+  resources :tickets
   resources :searches
 
   namespace :admin do
-    resources :users do
-      get :confirmed_users, on: :collection
-    end
+    resources :users
     resources :trains do
       resources :vans, shallow: true
     end
@@ -18,9 +13,7 @@ Rails.application.routes.draw do
       patch :set_index, on: :member
       patch :set_shedule, on: :member
     end
-    resources :tickets do
-      get :filled_from_search, on: :member
-    end
+    resources :tickets
     resources :routes
   end
 
