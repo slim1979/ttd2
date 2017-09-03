@@ -11,6 +11,8 @@ ru:
         number: 'Номер'
         current_station: 'Текущая станция'
         route: 'Назначить маршрут'
+        van_type_to_more_info: 'Выберите тип вагона'
+        places_type_to_more_info: 'Выберите тип мест'
       route:
         title: 'Наименование'
   errors:

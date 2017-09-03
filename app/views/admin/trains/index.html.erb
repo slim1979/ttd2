@@ -1,10 +1,10 @@
-<h4>Доступные поезда:</h4>
+<h4><%= t('.title') %></h4>
 
 <table>
   <thead>
     <tr>
-      <th>Номер</th>
-      <th>Вагонов</th>
+      <th><%= t('table.thead.number') %></th>
+      <th><%= t('table.thead.vans') %></th>
     </tr>
   </thead>
 
@@ -15,4 +15,4 @@
 
 <br>
 
-<%= link_to 'Создать новый поезд', new_admin_train_path %>
+<%= link_to t('links.new_train'), new_admin_train_path %>

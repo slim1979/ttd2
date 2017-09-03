@@ -5,6 +5,7 @@ ru:
       railway_station_has_next_routes: 'Станция входит в следующие маршруты:'
       route_has_no_railway_stations_yet: 'Станции маршруту не назначены'
       route_has_no_trains_yet: 'Поезда маршруту не назначены'
+      train_has_no_vans_yet: 'Поезду не назначены вагоны'
     errors: 'При заполнении формы возникли ошибки:'
   links:
     back: 'Назад'
@@ -13,6 +14,8 @@ ru:
     delete: 'Удалить'
     new_station: 'Создать станцию'
     new_route: 'Создать маршрут'
+    new_train: 'Создать поезд'
+    add_van: 'Добавить вагон'
   table:
     thead:
       name: 'Наименование:'
@@ -20,6 +23,8 @@ ru:
       arrival_time: 'Время прибытия'
       departure_time: 'Время убытия'
       position_in_route: 'Позиция в маршруте'
+      number: 'Номер'
+      vans: 'Вагонов'
   admin:
     railway_stations:
       index:
@@ -31,6 +36,24 @@ ru:
       form:
         submit: '%{action} станцию'
     trains:
+      index:
+        title: 'Имеющиеся поезда:'
+      new:
+        title: 'Новый поезд:'
+      edit:
+        title: 'Изменить поезд'
+      show:
+        train_number: 'Номер поезда:'
+        vans: 'Вагоны'
+        to_increase: 'В сторону увеличения'
+        to_decrease: 'В сторону уменьшения'
+        sort: 'Сортировать'
+        choose_type_get_info: 'Вы можете выбрать тип интересующего Вас вагона и получить дополнительную информацию по нему'
+        submit: 'Найти'
+        current_route: 'Текущий маршрут'
+        no_assigned_route: 'Нет назначенного маршрута'
+        current_station: 'Текущая станция'
+        not_available: 'Не указано'
       form:
         submit: '%{action} поезд'
     routes:

@@ -1,6 +1,6 @@
-<h1>Изменить поезд</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', train: [:admin, @train] %>
 
-<%= link_to 'Показать', [:admin, @train] %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('links.show'), [:admin, @train] %> |
+<%= link_to t('links.back'), admin_trains_path %>

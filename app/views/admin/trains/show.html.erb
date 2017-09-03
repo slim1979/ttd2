@@ -1,52 +1,52 @@
 <p>
-  <strong>Поезд номер:</strong>
+  <strong><%= t('.train_number') %></strong>
   <%= @train.number %>
   <br />
-  <%= link_to 'Добавить вагон', new_admin_train_van_path(@train) %>
+  <%= link_to t('links.add_van'), new_admin_train_van_path(@train), class: 'btn btn-primary btn-sm' %>
 
   <% if @train.vans.empty? %>
     <br />
-    К поезду не присоединены вагоны
+    <%= t('common.messages.train_has_no_vans_yet') %>
     <br />
   <% else %>
     <br />
-    <strong>Вагоны:</strong>
+    <strong><%= t('.vans') %></strong>
     <%= render @train.sort_vans %>
     <%= form_for [:admin, @train] do |form| %>
       <div>
-        <%= form.radio_button(:sort_by, "asc") %>В сторону увеличения
-        <%= form.radio_button(:sort_by, "desc") %>В сторону уменьшения
-        <%= form.submit 'Сортировать' %>
+        <%= form.radio_button(:sort_by, "asc") %> <%= t('.to_increase') %>
+        <%= form.radio_button(:sort_by, "desc") %> <%= t('.to_decrease') %>
+        <%= form.submit t('.sort') %>
       </div>
     <% end %>
 </p>
 <p>
-      Вы можете указать тип вагона и интересующие Вас места для получения информации о них
+      <%= t('.choose_type_get_info') %>
       <%= form_for [:admin, @train] do |form| %>
-        <%= form.label :van_type_to_more_info, 'Выберите тип вагона:' %>
+        <%= form.label :van_type_to_more_info %>
         <%= form.collection_select :van_type_to_more_info, @train.vans_collection, :first, :last %>
-        <%= form.label :places_type_to_more_info, 'Выберите тип мест:' %>
+        <%= form.label :places_type_to_more_info%>
         <%= form.collection_select :places_type_to_more_info, SeatsKind.all, :seats_type, :title %>
-        <p><%= form.submit 'Найти' %></p>
+        <p><%= form.submit t('.submit') %></p>
       <% end %>
       <%= @train.adv_info %>
   <% end %>
 </p>
 <p>
-  <strong>Текущий маршрут:</strong>
+  <strong><%= t('.current_route') %></strong>
   <% if @train.route %>
     <%= @train.route.title %>
   <% else %>
-    Нет назначенного маршрута
+    <%= t('.no_assigned_route') %>
   <% end %>
   <br />
-  <strong>Текущая станция:</strong>
+  <strong><%= t('.current_station') %></strong>
   <% if @train.current_station %>
     <%= @train.current_station.title %>
   <% else %>
-    Не указано
+    <%= t('.not_available') %>
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
-<%= link_to 'Назад', admin_trains_path %>
+<%= link_to t('links.edit'), edit_admin_train_path(@train) %> |
+<%= link_to t('links.back'), admin_trains_path %>
