@@ -10,6 +10,9 @@ ru:
     registrations:
       new:
         submit: 'Зарегистрироваться'
+    sessions:
+      new:
+        login: 'Войти'
   common:
     messages:
       railway_station_has_no_route_yet: 'Станция не входит ни в один маршрут'
