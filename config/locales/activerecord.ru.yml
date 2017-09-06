@@ -15,6 +15,14 @@ ru:
         places_type_to_more_info: 'Выберите тип мест'
       route:
         title: 'Наименование'
+      user:
+        name: 'Имя'
+        last_name: 'Фамилия'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить'
+        log_in: 'Войти'
+        submit: 'Регистрация'
   errors:
     messages:
       blank: 'не может быть пустым'
