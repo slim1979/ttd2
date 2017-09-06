@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170906171859) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "coupe_vans", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170906171859) do
   create_table "searches", force: :cascade do |t|
     t.integer "start_station_id"
     t.integer "finish_station_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_searches_on_user_id"
@@ -67,10 +70,10 @@ ActiveRecord::Schema.define(version: 20170906171859) do
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "train_id"
-    t.integer "start_station_id"
-    t.integer "finish_station_id"
-    t.integer "user_id"
+    t.bigint "train_id"
+    t.bigint "start_station_id"
+    t.bigint "finish_station_id"
+    t.bigint "user_id"
     t.integer "route_id"
     t.string "first_name"
     t.string "last_name"
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 20170906171859) do
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "current_station_id"
-    t.integer "route_id"
+    t.bigint "current_station_id"
+    t.bigint "route_id"
     t.string "sort_by"
     t.string "van_type_to_more_info"
     t.string "places_type_to_more_info"
@@ -96,8 +99,6 @@ ActiveRecord::Schema.define(version: 20170906171859) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 20170906171859) do
   end
 
   create_table "vans", force: :cascade do |t|
-    t.integer "train_id"
+    t.bigint "train_id"
     t.integer "top_seats"
     t.integer "bottom_seats"
     t.integer "side_top_seats"

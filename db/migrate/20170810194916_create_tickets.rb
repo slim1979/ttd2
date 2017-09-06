@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration[5.1]
       t.belongs_to :start_station
       t.belongs_to :finish_station
       t.belongs_to :user
+      t.timestamps
     end
   end
 end
