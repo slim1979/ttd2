@@ -8,12 +8,12 @@
         <%= link_to 'Выбрать', new_admin_ticket_path(route_id: route.id,
                                                      start_station_id: @start_station,
                                                      finish_station_id: @finish_station,
-                                                     train_id: train.id), class: "btn btn-primary btn-sm" %>
+                                                     train_id: train.id), class: "btn btn-default btn-md" %>
       <% else %>
         <%= link_to 'Выбрать', new_ticket_path(route_id: route.id,
                                                start_station_id: @start_station,
                                                finish_station_id: @finish_station,
-                                               train_id: train.id), class: "btn btn-primary btn-sm" %>
+                                               train_id: train.id), class: "btn btn-default btn-md" %>
       <% end %>
     </div>
 <% end %>
