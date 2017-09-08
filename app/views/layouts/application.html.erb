@@ -58,9 +58,10 @@
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Аккаунт: #{current_user.email}" %></li>
-            <li><%= link_to "Пользователь: #{current_user.name}" %></li>
-            <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Аккаунт: #{current_user.email} / #{current_user.name}" %></li>
+              <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+            <% end %>
           </ul>
         </div>
       </div>
