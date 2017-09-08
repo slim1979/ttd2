@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20170906171859) do
     t.bigint "start_station_id"
     t.bigint "finish_station_id"
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "route_id"
     t.string "first_name"
     t.string "last_name"
