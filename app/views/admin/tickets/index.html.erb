@@ -13,6 +13,7 @@
           <strong>От станции: </strong><%= ticket.start_station.title %>, отпр. <%= ticket.start_station.show_time_for('departure') %><br />
           <strong>До станции: </strong><%= ticket.finish_station.title %>, приб. <%= ticket.start_station.show_time_for('arrival') %><br />
           <strong>Поезд: </strong><%= ticket.train.number %><br />
+          <strong>Куплен: </strong><%= ticket.created_at %><br />
         </td>
         <td style='border-left:1px solid black'>
           <%= link_to 'Показать', ticket %><br />
