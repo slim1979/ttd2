@@ -24,6 +24,7 @@ gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'sprockets', '3.6.3'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
