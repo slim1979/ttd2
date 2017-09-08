@@ -19,7 +19,11 @@
   </div>
 </div>
 <br />
-<%= link_to 'К списку билетов', tickets_path %>
-<% if user_signed_in? && current_user.admin? %>
-  | <%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %>
+<% if user_signed_in? %>
+  <% if current_user.admin?  %>
+    <%= link_to 'К списку билетов', admin_tickets_path %> |
+    <%= link_to 'Редактировать', edit_admin_ticket_path(@ticket) %>
+  <% else %>
+    <%= link_to 'К списку билетов', tickets_path %>
+  <% end %>
 <% end %>
