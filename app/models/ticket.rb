@@ -7,7 +7,8 @@ class Ticket < ApplicationRecord
 
   validates :first_name, :last_name, :passport_serial, :passport_number, presence: true
 
-  after_create :send_notification
+  after_create :send_notification_buy_ticket
+  after_destroy :send_notification_delete_ticket
 
   def station_shedule(type)
     RailwayStationsRoute.where(railway_station: send("#{type}_station_id"), route: route_id).first
@@ -29,7 +30,11 @@ class Ticket < ApplicationRecord
 
   private
 
-  def send_notification
-    TicketsMailer.buy_ticket(self.user, self).deliver_now
+  def send_notification_buy_ticket
+    TicketsMailer.buy_ticket(user, self).deliver_now
+  end
+
+  def send_notification_delete_ticket
+    TicketsMailer.delete_ticket(user, self).deliver_now
   end
 end
