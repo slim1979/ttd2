@@ -50,29 +50,38 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Главная", root_path  %></li>
             <% if user_signed_in? %>
-              <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "Купить билет", new_search_path %></li>
+              <li><%= link_to "Мои билеты (#{current_user.tickets.count})", tickets_path %></li>
             <% else %>
               <li><%= link_to 'Войти', new_user_session_path %></li>
               <li><%= link_to 'Регистрация', new_user_registration_path %></li>
             <% end %>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Аккаунт: #{current_user.email}" %></li>
+            <li><%= link_to "Пользователь: #{current_user.name}" %></li>
+            <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+          </ul>
         </div>
       </div>
 
+      <% if user_signed_in? && current_user.admin? %>
+        <%= render 'layouts/admin_list' %>
+      <% else %>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-9">
+              <%= bootstrap_flash %>
+              <%= yield %>
+            </div>
+          </div><!--/row-->
 
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-        </div><!--/row-->
+          <footer>
+            <%= render 'layouts/footer' %>
+          </footer>
 
-        <footer>
-          <p>&copy; Company 2017</p>
-        </footer>
-
-      </div> <!-- /container -->
+        </div> <!-- /container -->
+      <% end %>
     </div>
   </body>
 </html>
