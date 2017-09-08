@@ -5,8 +5,8 @@ class RailwayStation < ApplicationRecord
 
   validates :title, presence: true
 
-  scope :increase, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
-  scope :decrease, -> { select('railway_stations.*, railway_stations_routes.position').joins(:railway_stations_routes).order("railway_stations_routes.position DESC").uniq }
+  scope :increase, -> { select('railway_stations.*, railway_stations_routes.railway_station_index').joins(:railway_stations_routes).order("railway_stations_routes.railway_station_index").uniq }
+  scope :decrease, -> { select('railway_stations.*, railway_stations_routes.railway_station_index').joins(:railway_stations_routes).order("railway_stations_routes.railway_station_index DESC").uniq }
 
   def set_index_on(route, index)
     station = station(route)
