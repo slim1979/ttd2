@@ -23,7 +23,7 @@ class Admin::VansController < Admin::BaseController
     @van = @train.vans.new(van_params)
 
     if @van.save
-      redirect_to @train, notice: 'Вагон успешно создан.'
+      redirect_to [:admin, @train], notice: 'Вагон успешно создан.'
     else
       render :new
     end
