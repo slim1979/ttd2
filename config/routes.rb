@@ -17,9 +17,12 @@ Rails.application.routes.draw do
     resources :routes
   end
 
-  get 'welcome/index'
+  authenticated :user do
+    root to: 'welcome#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
 
-  root 'welcome#index'
+  get 'welcome/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
