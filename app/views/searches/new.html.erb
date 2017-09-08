@@ -1,17 +1,30 @@
 <p>Привет, <%= current_user.name %></p>
 <br />
 <table>
-  <% @search.stations.each do |station| %>
+  <% if current_user.admin? %>
+    <% @search.stations.each do |station| %>
+      <tr>
+        <%= render 'set_shedule', station: station %>
+      </tr>
+    <% end %>
+  <% end %>
+
+  <%= form_for(@search) do |form| %>
     <tr>
-      <% if current_user.admin? %><%= render 'set_shedule', station: station %><% end %>
+      <td>
+        <%= form.label :title, 'Поиск билета' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= form.collection_select :start_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-links dropdown-toggle' } %>
+      </td>
+      <td>
+        <%= form.collection_select :finish_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-links dropdown-toggle' }  %>
+      </td>
+      <td>
+        <%= form.submit 'Поиск', class: "btn btn-primary btn-sm" %>
+      </td>
     </tr>
   <% end %>
 </table>
-<%= form_for(@search) do |form| %>
-  <%= form.label :title, 'Выберите станции' %>
-  <%= form.label :title, 'Начальная станция:' %>
-  <%= form.collection_select :start_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-default dropdown-toggle' } %>
-  <%= form.label :title, 'Конечная станция:' %>
-  <%= form.collection_select :finish_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-default dropdown-toggle' }  %>
-  <%= form.submit 'Поиск', class: "btn btn-primary btn-sm" %>
-<% end %>
