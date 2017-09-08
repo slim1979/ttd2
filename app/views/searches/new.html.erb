@@ -1,6 +1,4 @@
-<p>Привет, <%= current_user.name %></p>
-<br />
-<table>
+<table class='col-md-12'>
   <% if current_user.admin? %>
     <% @search.stations.each do |station| %>
       <tr>
@@ -12,18 +10,18 @@
   <%= form_for(@search) do |form| %>
     <tr>
       <td>
-        <%= form.label :title, 'Поиск билета' %>
+        <h3><%= form.label :title, 'Поиск билета' %></h3>
       </td>
     </tr>
     <tr>
-      <td>
-        <%= form.collection_select :start_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-links dropdown-toggle' } %>
+      <td class='col-md-5'>
+        <%= form.collection_select :start_station_id, RailwayStation.all, :id, :title, {}, { class: 'form-control dropdown-toggle'} %>
+      </td>
+      <td class='col-md-5'>
+        <%= form.collection_select :finish_station_id, RailwayStation.all, :id, :title, {}, { class: 'form-control dropdown-toggle' }  %>
       </td>
       <td>
-        <%= form.collection_select :finish_station_id, RailwayStation.all, :id, :title, {}, { class: 'btn btn-links dropdown-toggle' }  %>
-      </td>
-      <td>
-        <%= form.submit 'Поиск', class: "btn btn-primary btn-sm" %>
+        <%= form.submit 'Поиск', class: "btn btn-primary btn-md" %>
       </td>
     </tr>
   <% end %>
