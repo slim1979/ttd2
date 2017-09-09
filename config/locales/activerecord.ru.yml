@@ -20,9 +20,13 @@ ru:
         last_name: 'Фамилия'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+        current_password: 'Текущий пароль'
         remember_me: 'Запомнить'
         log_in: 'Войти'
         submit: 'Регистрация'
+        update: 'Изменить'
+    destroy:
+      confirm: 'Вы уверены?'
   errors:
     messages:
       blank: 'не может быть пустым'

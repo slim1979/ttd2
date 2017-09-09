@@ -10,6 +10,8 @@ ru:
     registrations:
       new:
         submit: 'Зарегистрироваться'
+      edit:
+        update: 'Сохранить изменения'
     sessions:
       new:
         login: 'Войти'
@@ -21,6 +23,7 @@ ru:
       route_has_no_trains_yet: 'Поезда маршруту не назначены'
       train_has_no_vans_yet: 'Поезду не назначены вагоны'
     errors: 'При заполнении формы возникли ошибки:'
+    cancel_my_account: 'Удалить аккаунт'
   links:
     back: 'Назад'
     show: 'Показать'
