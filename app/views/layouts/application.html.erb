@@ -54,6 +54,9 @@
             <%= current_user.admin? ? (render 'layouts/admin_navbar') : (render 'layouts/user_navbar') %>
           <% else %>
             <%= link_to 'TRANSPORT TYCOON DELUXE', '#', class: 'navbar-brand' %>
+            <ul class="nav navbar-nav">
+              <li><%= link_to 'Поиск билета', new_search_path %></li>
+            </ul>
           <% end %>
           <%= render 'layouts/navbar_right' %>
         </div>
