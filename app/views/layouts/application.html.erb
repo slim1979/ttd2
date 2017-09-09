@@ -48,11 +48,11 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <%= image_tag('train.jpg', class: 'navbar-brand') %>
           <% if user_signed_in? %>
             <a class="navbar-brand" href="#"><%= "#{current_user.admin? ? '=ADMIN=' : 'TTD'}" %></a>
             <%= current_user.admin? ? (render 'layouts/admin_navbar') : (render 'layouts/user_navbar') %>
           <% else %>
-            <%= image_tag('train.jpg', class: 'navbar-brand') %>
             <%= link_to 'TRANSPORT TYCOON DELUXE', '#', class: 'navbar-brand' %>
           <% end %>
           <%= render 'layouts/navbar_right' %>
