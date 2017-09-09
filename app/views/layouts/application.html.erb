@@ -52,7 +52,8 @@
             <a class="navbar-brand" href="#"><%= "#{current_user.admin? ? '=ADMIN=' : 'TTD'}" %></a>
             <%= current_user.admin? ? (render 'layouts/admin_navbar') : (render 'layouts/user_navbar') %>
           <% else %>
-            <a class="navbar-brand" href="#">TRANSPORT TYCOON DELUXE</a>
+            <%= link_to 'TRANSPORT TYCOON DELUXE', '#', class: 'navbar-brand' %>
+            <%= link_to 'Поиск билета', new_search_path %>
           <% end %>
           <%= render 'layouts/navbar_right' %>
         </div>
