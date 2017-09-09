@@ -1,11 +1,12 @@
 class SearchesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def new
     @search = Search.new
   end
 
   def create
     @search = Search.new(search_params)
-    @search.user = current_user
 
     if @search.save
       redirect_to @search
