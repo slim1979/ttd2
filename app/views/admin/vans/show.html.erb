@@ -11,5 +11,5 @@
     <%= @van.train.number %>
 </p>
 
-<%= link_to 'Редактировать', edit_van_path %> |
-<%= link_to 'К поезду', @van.train %>
+<%= link_to 'Редактировать', edit_admin_van_path %> |
+<%= link_to 'К поезду', [:admin, @van.train] %>
