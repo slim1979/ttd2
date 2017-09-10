@@ -11,7 +11,7 @@ class Van < ApplicationRecord
   belongs_to :train
 
   validates :number, uniqueness: { scope: :train_id }
-  before_validation :set_seats
+  # before_validation :set_seats
   before_save :set_number
 
   def seats_kind
