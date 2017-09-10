@@ -11,16 +11,12 @@ $(document).ready(function(){
     title = $('#railway_station_title_' + station_id);
 
     if (!$(this).hasClass('cancel')) {
-      form.show();
-      title.hide();
-
       $(this).html('Передумал...').addClass('btn btn-danger btn-md cancel');
     } else {
-      form.hide();
-      title.show();
-
       $(this).html('Изменить').removeClass('btn btn-danger btn-md cancel');
     }
 
+    form.toggle();
+    title.toggle();
   });
 });
