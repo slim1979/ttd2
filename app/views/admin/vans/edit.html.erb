@@ -1,6 +1,6 @@
 <h1>Изменить вагон</h1>
 
-<%= form_for [@train, @van.becomes(Van)] do |form| %>
+<%= form_for [:admin, @train, @van.becomes(Van)] do |form| %>
 <p><strong>Поезд: </strong><%= @van.train.number %><br />
 <strong>Вагон: </strong><%= @van.number %></p>
 
@@ -21,5 +21,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Показать вагон', van_path %> |
-<%= link_to 'К поезду', @van.train %>
+<%= link_to 'Показать вагон', admin_van_path %> |
+<%= link_to 'К поезду', [:admin, @van.train] %>
