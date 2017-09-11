@@ -6,9 +6,6 @@ $(document).ready(function(){
 
   $('.new_van').change('.van_type', function(){
     $(this).find('.van').hide();
-
-    type = $('#van_type').val();
-    console.log(type);
     $(this).find('.' + type).show();
   });
 });
