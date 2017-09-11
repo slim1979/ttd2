@@ -21,7 +21,7 @@
         <%= form.collection_select :finish_station_id, RailwayStation.all, :id, :title, {}, { class: 'form-control dropdown-toggle' }  %>
       </td>
       <td>
-        <%= form.submit 'Поиск', class: "btn btn-primary btn-md" %>
+        <%= form.submit 'Поиск', class: 'btn btn-primary btn-md find' %>
       </td>
     </tr>
   <% end %>

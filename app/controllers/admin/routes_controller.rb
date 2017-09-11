@@ -26,7 +26,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
     if @route.update(route_params)
-      redirect_to @route
+      redirect_to [:admin, @route]
       flash[:notice] = "Маршрут #{@route.title} обновлен!"
     else
       render :edit
