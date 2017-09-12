@@ -6,7 +6,7 @@
     <%= form.collection_select :type, VanKind.all, :van_type, :title %>
   </div>
 
-  <table>
+  <table class='table table-hover'>
     <tr>
       <div class="field PlatzVan CoupeVan van_seats_field" hidden>
         <%= form.label :top_seats, 'Верхние ' %>

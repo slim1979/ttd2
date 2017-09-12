@@ -8,7 +8,7 @@
   <% if @route.railway_stations.empty? %>
     <%= t('common.messages.route_has_no_railway_stations_yet') %>
   <% else %>
-    <table>
+    <table class='table table-hover'>
       <thead>
         <th><%= t('table.thead.station_title') %></th>
         <th><%= t('table.thead.arrival_time') %></th>
